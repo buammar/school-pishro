@@ -691,75 +691,116 @@
       .page-head h2 i{width:42px;height:42px;font-size:1.2rem}
     }
 
-    /* ============ نسخهٔ موبایل/اندروید: نوار بالا فشرده + منوی پایین ============ */
+    /* ============ نسخهٔ موبایل/اندروید + فشرده‌سازی ============ */
     html{-webkit-text-size-adjust:100%}
     .table-responsive{-webkit-overflow-scrolling:touch}
     input,select,textarea,.form-control,.form-select{font-size:16px!important}
+    .sidebar-nav,.sidebar-nav-label{display:none!important}   /* منوی ثابت حذف شد؛ ناوبری با صفحهٔ خانه */
+    .card{margin-bottom:16px}
+    .card-header{padding:12px 18px}
+    .card-body{padding:18px}
+    .content{padding:22px 28px 40px}
+    .page-head{margin-bottom:16px}
+
+    /* ----- صفحهٔ خانه ----- */
+    .home{display:none;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:6px}
+    .is-home .home{display:grid}
+    .tile{border:0;text-align:right;color:#fff;border-radius:22px;padding:20px 18px;display:flex;align-items:center;gap:14px;min-height:96px;box-shadow:0 14px 28px rgba(15,23,42,.16);transition:transform .15s}
+    .tile:active{transform:scale(.97)}
+    .tile .t-ic{width:54px;height:54px;border-radius:16px;background:rgba(255,255,255,.22);display:grid;place-items:center;flex-shrink:0}
+    .tile .t-ic i{font-size:1.7rem}
+    .tile b{display:block;font-size:1.05rem;font-weight:900;line-height:1.4}
+    .tile span.d{display:block;font-size:.78rem;opacity:.92;font-weight:600;line-height:1.5}
+    .tile .t-go{margin-inline-start:auto;font-size:1.2rem;opacity:.85}
+    .t-purple{background:var(--grad-purple)}.t-orange{background:var(--grad-orange)}.t-blue{background:var(--grad-blue)}.t-green{background:var(--grad-green)}
+
+    /* ----- نوار بازگشت داخل بخش ----- */
+    .back-bar{display:none;align-items:center;gap:10px;margin-bottom:14px}
+    .is-section .back-bar{display:flex}
+    .back-btn{border:0;background:#fff;color:#4f46e5;font-weight:800;border-radius:14px;padding:9px 14px;display:inline-flex;align-items:center;gap:6px;box-shadow:var(--sh-sm)}
+    .back-btn:active{transform:scale(.96)}
+    .back-title{font-weight:900;font-size:1.05rem;display:flex;align-items:center;gap:8px;min-width:0}
+    .back-title i{color:#6366f1}
+    .is-home .content>.tab-content-app,.is-home .content>.tab-content-app.active{display:none!important}
+    .is-home .content>.page-head{display:block}
+    .is-section .content>.page-head{display:none}
+
+    /* ----- کارت جستجو ----- */
+    .search-card .card-body{padding:14px 14px 12px}
+    .sc-title{font-weight:900;font-size:.92rem;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+    .sc-title i{color:#8b5cf6}
+    .sc-row{display:flex;gap:8px;align-items:stretch}
+    .sc-field{position:relative;flex:1;min-width:0}
+    .sc-field input{width:100%;height:46px;border:2px solid #e5e7eb;border-radius:14px;background:#f8fafc;padding:0 40px 0 38px;font-weight:600;outline:none;transition:.2s}
+    .sc-field input:focus{border-color:#8b5cf6;background:#fff;box-shadow:0 0 0 4px rgba(139,92,246,.12)}
+    .sc-field input::-webkit-search-cancel-button{display:none}
+    .sc-ic{position:absolute;inset-inline-start:13px;top:12px;color:#94a3b8;pointer-events:none}
+    .sc-x{position:absolute;inset-inline-end:6px;top:6px;width:34px;height:34px;border:0;border-radius:10px;background:#eef2ff;color:#6366f1;place-items:center}
+    .sc-go{height:46px;border-radius:14px;font-weight:800;padding:0 16px;display:inline-flex;align-items:center;gap:6px}
+    #dataSearchMsg .alert{margin:10px 0 0;padding:8px 12px;font-size:.85rem;border-radius:12px}
+
+    /* ----- نتیجهٔ جستجو (فشرده) ----- */
+    .pm{display:flex;align-items:center;gap:12px;background:var(--grad-purple);color:#fff;border-radius:18px;padding:12px 14px;margin-bottom:12px;box-shadow:0 10px 22px rgba(99,102,241,.3)}
+    .pm-avatar{width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.22);display:grid;place-items:center;flex-shrink:0}
+    .pm-avatar i{font-size:1.4rem}
+    .pm-info{min-width:0}
+    .pm-info b{display:block;font-size:1.05rem;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .pm-info span{font-size:.78rem;opacity:.92;font-weight:600}
+    .tabs-bar{margin-bottom:12px!important;gap:8px!important;padding:0!important}
+    .tab-btn{padding:9px 10px!important;font-size:.85rem!important;border-radius:14px!important;min-width:0}
+    .tab-btn i{font-size:1rem!important}
+    .tab-btn:hover{transform:none}
+    .flat-wrap{display:block}
+
+    .unit-card{background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:12px 14px 14px;box-shadow:var(--sh-sm);margin-bottom:12px}
+    .unit-head{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px;font-weight:900;font-size:.95rem}
+    .unit-head i{color:#6366f1}
+    .unit-actions{display:flex;gap:6px;flex-wrap:wrap}
+    .unit-actions .btn{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:11px;font-weight:700}
+    .kv-grid{display:grid;grid-template-columns:1fr;gap:6px}
+    @media(min-width:560px){.kv-grid{grid-template-columns:1fr 1fr}}
+    @media(min-width:1100px){.kv-grid{grid-template-columns:1fr 1fr 1fr}}
+    .kv{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#f8fafc;border-radius:12px;padding:8px 12px;min-height:40px}
+    .kv .k{font-size:.78rem;font-weight:700;color:#64748b;display:flex;align-items:center;gap:6px;flex-shrink:0}
+    .kv .k i{color:#8b5cf6}
+    .kv .v{font-weight:800;font-size:.9rem;color:#0f172a;text-align:left;overflow-wrap:anywhere;min-width:0}
+    .kv.wide{grid-column:1/-1;align-items:flex-start;flex-direction:column;gap:2px}
+    .kv.wide .v{text-align:right}
+    .kv.status-card{background:#f8fafc!important;box-shadow:none!important;transform:none!important;color:#0f172a}
+    .kv.status-card.editing{background:#fffbeb!important;outline:2px solid #fcd34d}
+    .kv.status-card .value-input{width:55%;min-width:0;height:34px;border:2px solid #e5e7eb;border-radius:10px;padding:0 10px;font-weight:700;color:#0f172a;background:#fff;text-align:right}
+    .kv.status-card .value-input:focus{border-color:#f59e0b;outline:none}
+
+    .rec-list{display:grid;gap:10px}
+    @media(min-width:1100px){.rec-list{grid-template-columns:1fr 1fr}}
+    .rec-card{background:#fff;border:1px solid #e5e7eb;border-right:4px solid var(--ac);border-radius:16px;padding:10px 12px 12px;box-shadow:var(--sh-sm)}
+    .rec-head{display:flex;align-items:center;gap:8px;font-weight:900;font-size:.88rem;margin-bottom:8px}
+    .rec-n{width:24px;height:24px;border-radius:8px;background:var(--ac);color:#fff;display:grid;place-items:center;font-size:.78rem}
+    .empty-state{padding:30px 16px}.empty-state i{font-size:2.6rem;margin-bottom:8px}
+    .karname-card,.karname-missing{padding:12px 14px!important;border-radius:16px!important;margin-top:4px}
+    .karname-card .icon{width:40px!important;height:40px!important}
+
     @media(max-width:700px){
-      body{padding-bottom:calc(74px + env(safe-area-inset-bottom))}
-      .sidebar{position:sticky;top:0;z-index:40;flex-wrap:nowrap;gap:10px;padding:10px 14px;padding-top:calc(10px + env(safe-area-inset-top));border-radius:0 0 20px 20px}
+      .sidebar{position:sticky;top:0;z-index:40;flex-wrap:nowrap;gap:10px;padding:10px 14px;padding-top:calc(10px + env(safe-area-inset-top));border-radius:0 0 20px 20px;cursor:pointer}
       .sidebar-brand{min-width:0;flex:1;padding:0;margin:0;border:0;gap:10px}
-      .sidebar-brand-logo{width:40px;height:40px;border-radius:12px}
-      .sidebar-brand-logo i{font-size:1.2rem}
+      .sidebar-brand-logo{width:38px;height:38px;border-radius:12px}
+      .sidebar-brand-logo i{font-size:1.1rem}
       .sidebar-brand-text h1{font-size:.92rem}
       .sidebar-user{display:none}
-      .btn-logout{flex:0 0 auto;width:42px;height:42px;padding:0!important;font-size:0!important;display:grid;place-items:center;border-radius:12px;margin:0}
-      .btn-logout i{font-size:1.25rem;margin:0}
-      .sidebar-nav{position:fixed;bottom:0;left:0;right:0;width:100%;z-index:50;display:flex;flex-direction:row;gap:4px;padding:6px 8px calc(6px + env(safe-area-inset-bottom));background:#0f172a;box-shadow:0 -8px 24px rgba(15,23,42,.25);overflow:visible;order:9}
-      .side-tab{flex:1;min-width:0;flex-direction:column;gap:2px;padding:7px 2px;font-size:.68rem;line-height:1.3;border-radius:12px;text-align:center;transform:none!important}
-      .side-tab i{font-size:1.3rem;margin:0}
-      .content{padding:14px}
-      .page-head h2{font-size:1.2rem}
+      .btn-logout{flex:0 0 auto;width:40px;height:40px;padding:0!important;font-size:0!important;display:grid;place-items:center;border-radius:12px;margin:0}
+      .btn-logout i{font-size:1.2rem;margin:0}
+      .content{padding:12px 12px calc(24px + env(safe-area-inset-bottom))}
+      .page-head h2{font-size:1.15rem}
+      .page-head .subtitle{font-size:.85rem}
       .panel-grid{grid-template-columns:1fr!important}
       .modal-dialog{margin:10px}
       .table{font-size:.82rem}
+      .home{grid-template-columns:1fr}
+      .tile{min-height:84px;padding:16px}
+      .sc-go{padding:0 14px}
+      .kv .v{font-size:.86rem}
     }
     @media(max-width:700px) and (display-mode:standalone){#loginPage{padding-top:calc(32px + env(safe-area-inset-top))}}
-
-    /* بهینه‌سازی چیدمان سوابق و فرم جستجو */
-    .search-modern{padding:16px 20px;border-radius:18px;margin-bottom:14px}
-    .search-modern-title{font-size:1rem;margin-bottom:10px}
-    .search-input-modern{padding:11px 48px 11px 16px;border-radius:12px;font-size:.92rem}
-    .search-input-wrap i.search-icon{right:16px;font-size:1.1rem}
-    .search-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .search-actions .btn{min-width:112px;padding:9px 18px}
-    .search-actions .btn-primary{flex:1}
-    .record-block{border-radius:14px;box-shadow:0 5px 14px rgba(15,23,42,.08)}
-    .record-block:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(15,23,42,.13)}
-    .records-grid{gap:12px}
-    .record-block-header{padding:9px 13px;font-size:.9rem}
-    .record-num{width:30px;height:30px;border-radius:9px;font-size:.85rem}
-    .record-block-body{padding:10px}
-    .record-field{padding:7px 10px;margin-bottom:6px;border-radius:9px;gap:8px}
-    .record-field-label{font-size:.8rem}
-    .record-field-value{font-size:.84rem}
-    .profile-details-card .card-header{padding:12px 18px}
-    .profile-details-card .card-body{padding:14px 18px}
-    .profile-details-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px}
-    .profile-detail-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 12px;border:1px solid #e2e8f0;border-radius:10px;background:#f8fafc;min-width:0}
-    .profile-detail-label{font-size:.8rem;color:#64748b;font-weight:700;white-space:nowrap}
-    .profile-detail-value{font-size:.88rem;color:#0f172a;overflow-wrap:anywhere;text-align:left}
-    .status-grid{display:grid;grid-template-columns:1fr;gap:0}
-    .status-details-card{border:1px solid #e2e8f0;border-radius:16px;padding:12px;background:#f8fafc}
-    .status-details-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}
-    .status-card{padding:9px 12px;border-radius:10px;min-height:48px;box-shadow:none;gap:8px}
-    .status-card:hover{transform:none;box-shadow:0 3px 10px rgba(15,23,42,.1)}
-    .status-card .label{font-size:.82rem}
-    .status-card .value{font-size:.88rem}
-    .status-card .value-input{max-width:150px;padding:6px 9px;font-size:.85rem}
-    .status-toolbar{gap:8px;margin-bottom:12px}
-    .status-toolbar .btn{min-width:0;padding:8px 14px}
-    @media(max-width:700px){
-      .search-modern{padding:13px}
-      .search-actions .btn{flex:1;min-width:0}
-      .profile-details-grid,.status-details-grid{grid-template-columns:1fr 1fr}
-      .record-block-header{padding:8px 10px}
-      .record-block-body{padding:8px}
-      .record-field{padding:6px 8px}
-    }
-    @media(max-width:420px){
-      .profile-details-grid,.status-details-grid{grid-template-columns:1fr}
-    }
   </style>
 </head>
 <body>
@@ -829,10 +870,10 @@
   </div>
 
   <!-- MANAGER VIEW -->
-  <div id="managerView" style="display:none;">
+  <div id="managerView" class="is-home" style="display:none;">
     <div class="app-shell">
       <aside class="sidebar">
-        <div class="sidebar-brand">
+        <div class="sidebar-brand" onclick="goHome()" role="button">
           <div class="sidebar-brand-logo"><i class="bi bi-mortarboard-fill"></i></div>
           <div class="sidebar-brand-text">
             <h1>سامانه هنرستان</h1>
@@ -871,35 +912,36 @@
           </div>
         </div>
 
-        <div id="mgr-tab-records" class="tab-content-app active">
-          <div class="card">
-            <div class="card-header bg-primary">
-              <h6 class="mb-0"><i class="bi bi-search"></i> جستجوی سوابق دانش‌آموزان</h6>
-            </div>
+        <div class="home" id="mgr-home">
+          <button class="tile t-purple" onclick="openSection('manager','records')"><span class="t-ic"><i class="bi bi-person-lines-fill"></i></span><span><b>مشاهده سوابق</b><span class="d">جستجو و ویرایش پرونده دانش‌آموزان</span></span><i class="bi bi-chevron-left t-go"></i></button>
+          <button class="tile t-orange" onclick="openSection('manager','absences')"><span class="t-ic"><i class="bi bi-calendar-x"></i></span><span><b>مشاهده غایبین</b><span class="d">غیبت‌های هر روز، ویرایش و حذف</span></span><i class="bi bi-chevron-left t-go"></i></button>
+          <button class="tile t-blue" onclick="openSection('manager','marks')"><span class="t-ic"><i class="bi bi-journal-text"></i></span><span><b>مشاهده نمرات</b><span class="d">نمرات ماهانه بر اساس پایه و رشته</span></span><i class="bi bi-chevron-left t-go"></i></button>
+        </div>
+        <div class="back-bar" id="mgr-back">
+          <button class="back-btn" onclick="goHome()"><i class="bi bi-arrow-right"></i> بازگشت</button>
+          <div class="back-title" id="mgr-back-title"></div>
+        </div>
+
+        <div id="mgr-tab-records" class="tab-content-app">
+          <div class="card search-card">
             <div class="card-body">
-              <div class="search-modern">
-                <div class="search-modern-title">
-                  <i class="bi bi-stars"></i> جستجوی هوشمند دانش‌آموز
+              <div class="sc-title"><i class="bi bi-stars"></i> جستجوی هوشمند دانش‌آموز</div>
+              <div class="sc-row">
+                <div class="sc-field">
+                  <i class="bi bi-search sc-ic"></i>
+                  <input id="searchQuery" type="search" enterkeyhint="search" autocomplete="off"
+                         placeholder="نام، کد ملی، تاریخ تولد یا شماره شناسنامه"
+                         onkeypress="if(event.key==='Enter') runDataSearch()"
+                         oninput="document.getElementById('scClear').style.display=this.value?'grid':'none'">
+                  <button id="scClear" type="button" class="sc-x" style="display:none" aria-label="پاکسازی"
+                          onclick="clearDataSearch();this.style.display='none'"><i class="bi bi-x-lg"></i></button>
                 </div>
-                <div class="search-input-wrap">
-                  <i class="bi bi-search search-icon"></i>
-                  <input id="searchQuery" type="text" class="search-input-modern"
-                         placeholder="نام، کد ملی، تاریخ تولد یا شماره شناسنامه..."
-                         onkeypress="if(event.key==='Enter') runDataSearch()">
-                </div>
-                <div class="d-flex gap-2 mt-3 flex-wrap">
-                  <button class="btn btn-primary flex-fill" onclick="runDataSearch()">
-                    <i class="bi bi-search"></i> جستجو
-                  </button>
-                  <button class="btn btn-outline-secondary" onclick="clearDataSearch()">
-                    <i class="bi bi-x-circle"></i> پاکسازی
-                  </button>
-                </div>
+                <button class="btn btn-primary sc-go" onclick="runDataSearch()"><i class="bi bi-search"></i><span>جستجو</span></button>
               </div>
               <div id="dataSearchMsg"></div>
-              <div id="dataSearchResult"></div>
             </div>
           </div>
+          <div id="dataSearchResult"></div>
         </div>
 
         <div id="mgr-tab-absences" class="tab-content-app">
@@ -980,10 +1022,10 @@
   </div>
 
   <!-- ASSISTANT VIEW -->
-  <div id="assistantView" style="display:none;">
+  <div id="assistantView" class="is-home" style="display:none;">
     <div class="app-shell">
       <aside class="sidebar">
-        <div class="sidebar-brand">
+        <div class="sidebar-brand" onclick="goHome()" role="button">
           <div class="sidebar-brand-logo" style="background:var(--grad-green)">
             <i class="bi bi-person-check-fill"></i>
           </div>
@@ -1021,7 +1063,16 @@
           </div>
         </div>
 
-        <div id="ast-tab-register" class="tab-content-app active">
+        <div class="home" id="ast-home">
+          <button class="tile t-green" onclick="openSection('assistant','register')"><span class="t-ic"><i class="bi bi-plus-circle"></i></span><span><b>ثبت غیبت</b><span class="d">ثبت غیبت جدید دانش‌آموزان</span></span><i class="bi bi-chevron-left t-go"></i></button>
+          <button class="tile t-blue" onclick="openSection('assistant','view')"><span class="t-ic"><i class="bi bi-search"></i></span><span><b>مشاهده غیبت‌ها</b><span class="d">جستجو، ویرایش، حذف و PDF</span></span><i class="bi bi-chevron-left t-go"></i></button>
+        </div>
+        <div class="back-bar" id="ast-back">
+          <button class="back-btn" onclick="goHome()"><i class="bi bi-arrow-right"></i> بازگشت</button>
+          <div class="back-title" id="ast-back-title"></div>
+        </div>
+
+        <div id="ast-tab-register" class="tab-content-app">
           <div class="card">
             <div class="card-header bg-success">
               <h6 class="mb-0"><i class="bi bi-plus-circle"></i> ثبت غیبت جدید</h6>
@@ -1445,8 +1496,7 @@ function runDataSearch(){
       window.APP_STATE.lastData = data;
       window.APP_STATE.editing = false;
 
-      msg.innerHTML = '<div class="alert alert-success"><i class="bi bi-check2-circle"></i> رکورد یافت شد — ' +
-        (data.totalRows || 0) + ' ردیف سابقه</div>';
+      msg.innerHTML = "";
       renderDataResult(data, res);
     })
     .withFailureHandler(function(err){
@@ -1471,13 +1521,11 @@ function renderDataResult(data, container){
 
   var html = "";
 
-  html += '<div class="profile-header">' +
-    '<div class="profile-avatar"><i class="bi bi-person-fill"></i></div>' +
-    '<div class="profile-info">' +
-      '<h3>' + escapeHtml(fullName) + '</h3>' +
-      '<p><i class="bi bi-hash"></i> ' + escapeHtml(data.profile["کد ملی"] || data.profile["شماره شناسنامه"] || "—") +
-      ' &nbsp;|&nbsp; <i class="bi bi-journal-bookmark"></i> ' + (data.totalRows || 0) + ' سابقه</p>' +
-    '</div>' +
+  html += '<div class="pm">' +
+    '<div class="pm-avatar"><i class="bi bi-person-fill"></i></div>' +
+    '<div class="pm-info"><b>' + escapeHtml(fullName) + '</b>' +
+    '<span><i class="bi bi-hash"></i>' + escapeHtml(data.profile["کد ملی"] || data.profile["شماره شناسنامه"] || "—") +
+    ' &nbsp;·&nbsp; ' + (data.totalRows || 0) + ' سابقه</span></div>' +
   '</div>';
 
   html += '<div class="tabs-bar" id="' + tabId + '-bar">' +
@@ -1489,55 +1537,36 @@ function renderDataResult(data, container){
       '<i class="bi bi-clipboard-check"></i> وضعیت پرونده</button>' +
   '</div>';
 
-  /* مشخصات: همه اطلاعات در یک کارت فشرده */
-  html += '<div id="' + tabId + '-info" class="tab-content-app active">' +
-    '<div class="card profile-details-card"><div class="card-header bg-primary"><h6><i class="bi bi-person-vcard"></i> مشخصات دانش‌آموز</h6></div>' +
-    '<div class="card-body"><div class="profile-details-grid">';
-
+  /* مشخصات */
   var melli = data.profile["کد ملی"] || "";
   var doc = data.profile["شماره شناسنامه"] || "";
+  var melliValid = melli.replace(/\D/g, "").length === 10;
   var orderedFields = ["نام", "نام خانوادگی", "نام پدر", "تاریخ تولد"];
-  if(melli) orderedFields.push("کد ملی");
-  if(doc) orderedFields.push("شماره شناسنامه");
+  if(melliValid) orderedFields.push("کد ملی"); else if(doc) orderedFields.push("شماره شناسنامه");
+  var fieldIcons = { "نام":"bi-person-fill", "نام خانوادگی":"bi-people-fill", "نام پدر":"bi-person-badge-fill",
+                     "تاریخ تولد":"bi-calendar-event-fill", "کد ملی":"bi-credit-card-2-front-fill", "شماره شناسنامه":"bi-card-checklist" };
+  html += '<div id="' + tabId + '-info" class="tab-content-app active">' +
+    '<div class="unit-card"><div class="unit-head"><span><i class="bi bi-person-vcard"></i> مشخصات دانش‌آموز</span></div>' +
+    '<div class="kv-grid">';
   orderedFields.forEach(function(key){
-    var val = data.profile[key] || "—";
-    html += '<div class="profile-detail-item"><span class="profile-detail-label">' + escapeHtml(key) +
-      '</span><strong class="profile-detail-value">' + escapeHtml(val) + '</strong></div>';
+    html += '<div class="kv"><span class="k"><i class="bi ' + (fieldIcons[key] || "bi-dot") + '"></i> ' + escapeHtml(key) + '</span>' +
+            '<span class="v">' + escapeHtml(data.profile[key] || "—") + '</span></div>';
   });
-  html += '</div></div></div></div>';
+  html += '</div></div></div>';
 
   /* سوابق */
   html += '<div id="' + tabId + '-records" class="tab-content-app">' +
-    '<div class="card"><div class="card-body">';
+    '<div class="flat-wrap">';
 
   if(data.records && data.records.length > 0){
-    var palettes = [
-      { header:"linear-gradient(135deg,#6366f1,#8b5cf6)", body:"linear-gradient(135deg,#eef2ff,#e0e7ff)", accent:"#6366f1" },
-      { header:"linear-gradient(135deg,#10b981,#06b6d4)", body:"linear-gradient(135deg,#ecfeff,#d1fae5)", accent:"#10b981" },
-      { header:"linear-gradient(135deg,#f59e0b,#f97316)", body:"linear-gradient(135deg,#fff7ed,#fef3c7)", accent:"#f59e0b" },
-      { header:"linear-gradient(135deg,#ec4899,#f43f5e)", body:"linear-gradient(135deg,#fdf2f8,#fce7f3)", accent:"#ec4899" },
-      { header:"linear-gradient(135deg,#0ea5e9,#3b82f6)", body:"linear-gradient(135deg,#eff6ff,#dbeafe)", accent:"#0ea5e9" },
-      { header:"linear-gradient(135deg,#14b8a6,#10b981)", body:"linear-gradient(135deg,#f0fdfa,#ccfbf1)", accent:"#14b8a6" },
-      { header:"linear-gradient(135deg,#a855f7,#8b5cf6)", body:"linear-gradient(135deg,#faf5ff,#f3e8ff)", accent:"#a855f7" },
-      { header:"linear-gradient(135deg,#fbbf24,#f59e0b)", body:"linear-gradient(135deg,#fffbeb,#fef3c7)", accent:"#fbbf24" }
-    ];
-    html += '<div class="records-grid">';
+    var accents = ["#6366f1","#10b981","#f59e0b","#ec4899","#0ea5e9","#14b8a6","#a855f7","#f97316"];
+    html += '<div class="rec-list">';
     data.records.forEach(function(rec, idx){
-      var p = palettes[idx % palettes.length];
-      html += '<div class="record-block">' +
-        '<div class="record-block-header" style="background:' + p.header + '">' +
-          '<div style="display:flex;align-items:center;gap:12px">' +
-            '<div class="record-num">' + (idx + 1) + '</div>' +
-            '<span>سابقه ' + (idx + 1) + '</span>' +
-          '</div>' +
-          '<i class="bi bi-journal-check" style="font-size:1.5rem;opacity:.9"></i>' +
-        '</div>' +
-        '<div class="record-block-body" style="background:' + p.body + '">';
+      var ac = accents[idx % accents.length];
+      html += '<div class="rec-card" style="--ac:' + ac + '"><div class="rec-head"><span class="rec-n">' + (idx + 1) + '</span> سابقه ' + (idx + 1) + '</div><div class="kv-grid">';
       rec.fields.forEach(function(f){
-        html += '<div class="record-field" style="border-right:4px solid ' + p.accent + '">' +
-          '<span class="record-field-label">' + escapeHtml(f.title) + '</span>' +
-          '<span class="record-field-value">' + escapeHtml(f.value) + '</span>' +
-        '</div>';
+        var v = String(f.value == null ? "" : f.value);
+        html += '<div class="kv' + (v.length > 38 ? ' wide' : '') + '"><span class="k">' + escapeHtml(f.title) + '</span><span class="v">' + escapeHtml(v) + '</span></div>';
       });
       html += '</div></div>';
     });
@@ -1545,11 +1574,11 @@ function renderDataResult(data, container){
   } else {
     html += '<div class="empty-state"><i class="bi bi-journal"></i><p>سابقه‌ای ثبت نشده</p></div>';
   }
-  html += '</div></div></div>';
+  html += '</div></div>';
 
   /* وضعیت پرونده */
   html += '<div id="' + tabId + '-status" class="tab-content-app">' +
-    '<div class="card"><div class="card-body">';
+    '<div class="flat-wrap">';
 
   var statusArr = data.status || [];
   var statusObj = {};
@@ -1571,33 +1600,22 @@ function renderDataResult(data, container){
 
   var rowIndexesStr = JSON.stringify(rowIndexesArr);
 
-  html += '<div class="status-toolbar">' +
-    '<button class="btn btn-warning" id="' + tabId + '-edit-btn" style="display:' + (editing ? 'none' : 'inline-block') + ';" onclick="startEditStatus(\'' + tabId + '\')">' +
-      '<i class="bi bi-pencil-square"></i> ویرایش وضعیت‌ها' +
-    '</button>' +
-    '<button class="btn btn-success" id="' + tabId + '-save-btn" style="display:' + (editing ? 'inline-block' : 'none') + ';" data-rows=\'' + rowIndexesStr + '\' onclick="saveAllStatus(\'' + tabId + '\')">' +
-      '<i class="bi bi-check2-circle"></i> ذخیره تغییرات' +
-    '</button>' +
-    '<button class="btn btn-outline-secondary" id="' + tabId + '-cancel-btn" style="display:' + (editing ? 'inline-block' : 'none') + ';" onclick="cancelEditStatus(\'' + tabId + '\')">' +
-      '<i class="bi bi-x-circle"></i> انصراف' +
-    '</button>' +
-  '</div>';
-
-  html += '<div class="status-grid">';
+  html += '<div class="unit-card"><div class="unit-head"><span><i class="bi bi-clipboard-check"></i> وضعیت پرونده</span>' +
+    '<span class="unit-actions">' +
+    '<button class="btn btn-warning btn-sm" id="' + tabId + '-edit-btn" style="display:' + (editing ? 'none' : 'inline-flex') + ';" onclick="startEditStatus(\'' + tabId + '\')"><i class="bi bi-pencil-square"></i> ویرایش</button>' +
+    '<button class="btn btn-success btn-sm" id="' + tabId + '-save-btn" style="display:' + (editing ? 'inline-flex' : 'none') + ';" data-rows=\'' + rowIndexesStr + '\' onclick="saveAllStatus(\'' + tabId + '\')"><i class="bi bi-check2-circle"></i> ذخیره</button>' +
+    '<button class="btn btn-outline-secondary btn-sm" id="' + tabId + '-cancel-btn" style="display:' + (editing ? 'inline-flex' : 'none') + ';" onclick="cancelEditStatus(\'' + tabId + '\')"><i class="bi bi-x-circle"></i> انصراف</button>' +
+    '</span></div><div class="kv-grid">';
   keysToShow.forEach(function(k){
     var s = statusObj[k];
     if(!s) return;
-    var color = statusColors[k] || "linear-gradient(135deg,#a5b4fc,#6366f1)";
-    var inputStyle = editing ? "display:inline-block;" : "display:none;";
-    var valueStyle = editing ? "display:none;" : "display:inline;";
-
-    html += '<div class="status-card' + (editing ? ' editing' : '') + '" id="' + tabId + '-card-' + s.colIndex + '" style="background:' + color + '">' +
-      '<span class="label" style="color:#fff"><i class="bi bi-clipboard-data"></i> ' + escapeHtml(k) + '</span>' +
-      '<span class="value" style="color:#fff;' + valueStyle + '">' + escapeHtml(s.value || "—") + '</span>' +
-      '<input type="text" class="value-input" style="' + inputStyle + '" value="' + escapeHtml(s.value) + '" data-original="' + escapeHtml(s.value) + '">' +
+    html += '<div class="kv status-card' + (editing ? ' editing' : '') + '" id="' + tabId + '-card-' + s.colIndex + '">' +
+      '<span class="k label"><i class="bi bi-clipboard-data"></i> ' + escapeHtml(k) + '</span>' +
+      '<span class="v value" style="' + (editing ? 'display:none;' : '') + '">' + escapeHtml(s.value || "—") + '</span>' +
+      '<input type="text" class="value-input" style="' + (editing ? 'display:block;' : 'display:none;') + '" value="' + escapeHtml(s.value) + '" data-original="' + escapeHtml(s.value) + '">' +
     '</div>';
   });
-  html += '</div>';
+  html += '</div></div>';
 
   if(keysToShow.length === 0){
     html += '<div class="empty-state"><i class="bi bi-clipboard"></i><p>وضعیت پرونده ثبت نشده</p></div>';
@@ -1622,7 +1640,7 @@ function renderDataResult(data, container){
       '<span>کارنامه یافت نشد</span>' +
     '</div>';
   }
-  html += '</div></div></div>';
+  html += '</div></div>';
 
   container.innerHTML = html;
 
@@ -2207,6 +2225,38 @@ document.addEventListener("DOMContentLoaded", function(){
 </script>
 
 <script>
+/* ===== ناوبری: صفحهٔ خانه ↔ بخش‌ها (دکمهٔ بازگشت گوشی هم کار می‌کند) ===== */
+var SECTION_TITLES = {
+  records:  '<i class="bi bi-person-lines-fill"></i> مشاهده سوابق',
+  absences: '<i class="bi bi-calendar-x"></i> مشاهده غایبین',
+  marks:    '<i class="bi bi-journal-text"></i> مشاهده نمرات',
+  register: '<i class="bi bi-plus-circle"></i> ثبت غیبت',
+  view:     '<i class="bi bi-search"></i> مشاهده غیبت‌ها'
+};
+function setView(mode){
+  ['managerView','assistantView'].forEach(function(id){
+    var v = document.getElementById(id); if(!v) return;
+    v.classList.toggle('is-home', mode !== 'section');
+    v.classList.toggle('is-section', mode === 'section');
+  });
+}
+function openSection(role, tab){
+  var view = document.getElementById(role === 'manager' ? 'managerView' : 'assistantView');
+  var btn = view.querySelector('.side-tab[onclick*="\'' + tab + '\'"]');
+  if(role === 'manager') showManagerTab(tab, btn); else showAssistantTab(tab, btn);
+  var t = document.getElementById(role === 'manager' ? 'mgr-back-title' : 'ast-back-title');
+  if(t) t.innerHTML = SECTION_TITLES[tab] || '';
+  setView('section');
+  try{ history.pushState({sec:1}, ''); }catch(e){}
+  window.scrollTo(0, 0);
+}
+function goHome(){
+  if(history.state && history.state.sec){ history.back(); return; }
+  setView('home'); window.scrollTo(0, 0);
+}
+window.addEventListener('popstate', function(){ setView('home'); window.scrollTo(0, 0); });
+try{ history.replaceState(null, ''); }catch(e){}
+
 /* ===== اتصال به PWA/اندروید: ماندن در حساب، خروج امن، Service Worker ===== */
 (function(){
   var KEY='pp2_session', MAXAGE=19800000;
@@ -2221,7 +2271,7 @@ document.addEventListener("DOMContentLoaded", function(){
     var orig=logout;
     logout=function(){
       orig();
-      if(userData===null){ try{google.script.run.logoutUser();}catch(e){} clear(); window.__tok=''; }
+      if(userData===null){ try{google.script.run.logoutUser();}catch(e){} clear(); window.__tok=''; setView('home'); }
     };
   }
   try{ google.script.run.ping(); }catch(e){}
