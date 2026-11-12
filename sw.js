@@ -1,6 +1,6 @@
 // فایل‌های همین دامنه: اول شبکه، بعد کش. فایل‌های CDN (بوت‌استرپ، آیکون، فونت): کش‌شده و به‌روزرسانی در پس‌زمینه.
 // درخواست‌های API (script.google.com) هرگز کش نمی‌شوند.
-var CACHE = 'honarestan-v1', CDN = 'honarestan-cdn-v1';
+var CACHE = 'honarestan-v2', CDN = 'honarestan-cdn-v1';
 var ASSETS = ['./', './index.html', './config.js', './api-shim.js', './manifest.json', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', function (e) {
