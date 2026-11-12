@@ -715,6 +715,51 @@
       .table{font-size:.82rem}
     }
     @media(max-width:700px) and (display-mode:standalone){#loginPage{padding-top:calc(32px + env(safe-area-inset-top))}}
+
+    /* بهینه‌سازی چیدمان سوابق و فرم جستجو */
+    .search-modern{padding:16px 20px;border-radius:18px;margin-bottom:14px}
+    .search-modern-title{font-size:1rem;margin-bottom:10px}
+    .search-input-modern{padding:11px 48px 11px 16px;border-radius:12px;font-size:.92rem}
+    .search-input-wrap i.search-icon{right:16px;font-size:1.1rem}
+    .search-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .search-actions .btn{min-width:112px;padding:9px 18px}
+    .search-actions .btn-primary{flex:1}
+    .record-block{border-radius:14px;box-shadow:0 5px 14px rgba(15,23,42,.08)}
+    .record-block:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(15,23,42,.13)}
+    .records-grid{gap:12px}
+    .record-block-header{padding:9px 13px;font-size:.9rem}
+    .record-num{width:30px;height:30px;border-radius:9px;font-size:.85rem}
+    .record-block-body{padding:10px}
+    .record-field{padding:7px 10px;margin-bottom:6px;border-radius:9px;gap:8px}
+    .record-field-label{font-size:.8rem}
+    .record-field-value{font-size:.84rem}
+    .profile-details-card .card-header{padding:12px 18px}
+    .profile-details-card .card-body{padding:14px 18px}
+    .profile-details-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px}
+    .profile-detail-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 12px;border:1px solid #e2e8f0;border-radius:10px;background:#f8fafc;min-width:0}
+    .profile-detail-label{font-size:.8rem;color:#64748b;font-weight:700;white-space:nowrap}
+    .profile-detail-value{font-size:.88rem;color:#0f172a;overflow-wrap:anywhere;text-align:left}
+    .status-grid{display:grid;grid-template-columns:1fr;gap:0}
+    .status-details-card{border:1px solid #e2e8f0;border-radius:16px;padding:12px;background:#f8fafc}
+    .status-details-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}
+    .status-card{padding:9px 12px;border-radius:10px;min-height:48px;box-shadow:none;gap:8px}
+    .status-card:hover{transform:none;box-shadow:0 3px 10px rgba(15,23,42,.1)}
+    .status-card .label{font-size:.82rem}
+    .status-card .value{font-size:.88rem}
+    .status-card .value-input{max-width:150px;padding:6px 9px;font-size:.85rem}
+    .status-toolbar{gap:8px;margin-bottom:12px}
+    .status-toolbar .btn{min-width:0;padding:8px 14px}
+    @media(max-width:700px){
+      .search-modern{padding:13px}
+      .search-actions .btn{flex:1;min-width:0}
+      .profile-details-grid,.status-details-grid{grid-template-columns:1fr 1fr}
+      .record-block-header{padding:8px 10px}
+      .record-block-body{padding:8px}
+      .record-field{padding:6px 8px}
+    }
+    @media(max-width:420px){
+      .profile-details-grid,.status-details-grid{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
@@ -1444,44 +1489,20 @@ function renderDataResult(data, container){
       '<i class="bi bi-clipboard-check"></i> وضعیت پرونده</button>' +
   '</div>';
 
-  /* مشخصات */
+  /* مشخصات: همه اطلاعات در یک کارت فشرده */
   html += '<div id="' + tabId + '-info" class="tab-content-app active">' +
-    '<div class="card"><div class="card-body"><div class="info-grid">';
+    '<div class="card profile-details-card"><div class="card-header bg-primary"><h6><i class="bi bi-person-vcard"></i> مشخصات دانش‌آموز</h6></div>' +
+    '<div class="card-body"><div class="profile-details-grid">';
 
   var melli = data.profile["کد ملی"] || "";
   var doc = data.profile["شماره شناسنامه"] || "";
-  var melliDigits = melli.replace(/\D/g, "");
-  var melliValid = melliDigits.length === 10;
-
   var orderedFields = ["نام", "نام خانوادگی", "نام پدر", "تاریخ تولد"];
-  if(melliValid){
-    orderedFields.push("کد ملی");
-  } else if(doc){
-    orderedFields.push("شماره شناسنامه");
-  }
-
-  var fieldColors = [
-    "linear-gradient(135deg,#a5b4fc,#818cf8)",
-    "linear-gradient(135deg,#f9a8d4,#f472b6)",
-    "linear-gradient(135deg,#6ee7b7,#34d399)",
-    "linear-gradient(135deg,#fcd34d,#fbbf24)",
-    "linear-gradient(135deg,#c4b5fd,#a78bfa)",
-    "linear-gradient(135deg,#93c5fd,#60a5fa)"
-  ];
-  var fieldIcons = [
-    "bi-person-fill", "bi-people-fill", "bi-person-badge-fill",
-    "bi-calendar-event-fill", "bi-card-checklist", "bi-credit-card-2-front-fill"
-  ];
-
-  orderedFields.forEach(function(key, idx){
-    var val = data.profile[key];
-    var displayVal = val || "—";
-    var color = fieldColors[idx % fieldColors.length];
-    var icon = fieldIcons[idx % fieldIcons.length];
-    html += '<div class="info-row colorful" style="background:' + color + '">' +
-      '<span class="label" style="color:#fff"><i class="bi ' + icon + '"></i> ' + escapeHtml(key) + '</span>' +
-      '<span class="value" style="color:#fff">' + escapeHtml(displayVal) + '</span>' +
-    '</div>';
+  if(melli) orderedFields.push("کد ملی");
+  if(doc) orderedFields.push("شماره شناسنامه");
+  orderedFields.forEach(function(key){
+    var val = data.profile[key] || "—";
+    html += '<div class="profile-detail-item"><span class="profile-detail-label">' + escapeHtml(key) +
+      '</span><strong class="profile-detail-value">' + escapeHtml(val) + '</strong></div>';
   });
   html += '</div></div></div></div>';
 
